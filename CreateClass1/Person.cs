@@ -27,7 +27,7 @@ namespace CreateClass1
         Female
     }
     
-    class Employee : Person
+    class Employee : Person, ICloneable
     {
         public int Salary;
         public string Profession;
@@ -42,7 +42,19 @@ namespace CreateClass1
 
         public override string ToString()
         {
-            return $"{base.ToString()}, {nameof(Salary)}: {Salary}, {nameof(Profession)}: {Profession}";
+            return $"{base.ToString()}, {nameof(Salary)}: {Salary}, {nameof(Profession)}: {Profession}, {nameof(Room)}: {Room.Number}";
+        }
+
+        // public object Clone()
+        // {
+        //     return this.MemberwiseClone();
+        // }
+        
+        public object Clone()
+        {
+            Employee newEmployee = (Employee)this.MemberwiseClone();
+            newEmployee.Room = new Room(Room.Number);
+            return newEmployee;
         }
     }
     
