@@ -26,4 +26,34 @@ namespace CreateClass1
         Male,
         Female
     }
+    
+    class Employee : Person
+    {
+        public int Salary;
+        public string Profession;
+        public Room Room;
+
+
+        public Employee(string name, DateTime birthDay, Gender gender, int salary, string profession) : base(name, birthDay, gender)
+        {
+            Salary = salary;
+            Profession = profession;
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, {nameof(Salary)}: {Salary}, {nameof(Profession)}: {Profession}";
+        }
+    }
+    
+    public class Room
+    {
+        public int Number;
+
+
+        public Room(int number)
+        {
+            Number = number;
+        }
+    }
 }
